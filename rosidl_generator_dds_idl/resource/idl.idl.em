@@ -5,6 +5,8 @@
 import os
 from rosidl_parser.definition import Include
 includes = content.get_elements_of_type(Include)
+
+include_directives = set()
 }@
 @[if includes]@
 
@@ -13,6 +15,7 @@ includes = content.get_elements_of_type(Include)
 name, ext = os.path.splitext(include.locator)
 dir_name = os.path.dirname(name)
 include_name = '{}_{}'.format(os.path.join(dir_name, *subfolders, os.path.basename(name)), ext)
+include_directives.add(include_name)
 }@
 #include "@(include_name)"
 @[  end for]@
@@ -36,6 +39,7 @@ for message in content.get_elements_of_type(Message):
     TEMPLATE(
         'msg.idl.em', package_name=package_name,
         interface_path=interface_path, message=message,
+        include_directives=include_directives,
         get_post_struct_lines=get_post_struct_lines
     )
 
@@ -43,6 +47,7 @@ for service in content.get_elements_of_type(Service):
     TEMPLATE(
         'srv.idl.em', package_name=package_name,
         interface_path=interface_path, service=service,
+        include_directives=include_directives,
         get_post_struct_lines=get_post_struct_lines
     )
 
@@ -50,6 +55,7 @@ for action in content.get_elements_of_type(Action):
     TEMPLATE(
         'action.idl.em', package_name=package_name,
         interface_path=interface_path, action=action,
+        include_directives=include_directives,
         get_post_struct_lines=get_post_struct_lines
     )
 }@

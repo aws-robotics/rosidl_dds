@@ -5,6 +5,7 @@ TEMPLATE(
     package_name=package_name,
     interface_path=interface_path,
     message=action.goal_request,
+    include_directives=include_directives,
     get_post_struct_lines=get_post_struct_lines
 )
 TEMPLATE(
@@ -12,6 +13,7 @@ TEMPLATE(
     package_name=package_name,
     interface_path=interface_path,
     service=action.goal_service,
+    include_directives=include_directives,
     get_post_struct_lines=get_post_struct_lines
 )
 TEMPLATE(
@@ -19,6 +21,7 @@ TEMPLATE(
     package_name=package_name,
     interface_path=interface_path,
     message=action.result_response,
+    include_directives=include_directives,
     get_post_struct_lines=get_post_struct_lines
 )
 TEMPLATE(
@@ -26,6 +29,7 @@ TEMPLATE(
     package_name=package_name,
     interface_path=interface_path,
     service=action.result_service,
+    include_directives=include_directives,
     get_post_struct_lines=get_post_struct_lines
 )
 TEMPLATE(
@@ -33,6 +37,7 @@ TEMPLATE(
     package_name=package_name,
     interface_path=interface_path,
     message=action.feedback,
+    include_directives=include_directives,
     get_post_struct_lines=get_post_struct_lines
 )
 TEMPLATE(
@@ -40,6 +45,7 @@ TEMPLATE(
     package_name=package_name,
     interface_path=interface_path,
     message=action.feedback_message,
+    include_directives=include_directives,
     get_post_struct_lines=get_post_struct_lines
 )
 }@
